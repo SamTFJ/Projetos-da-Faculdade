@@ -14,7 +14,7 @@ int main() {
   int escolha = 0;
   string procurar_ID;
   string procurar_Nome;
-  system("CLS");
+  //system("CLS");
   CRUD.AbrirArquivo();
 
   do
@@ -39,7 +39,7 @@ int main() {
         //Inserir
         case 1:
             CRUD.InserirItem();
-            system("CLS");
+            //system("CLS");
             break;
 
         //Atualizar
@@ -83,7 +83,7 @@ int main() {
                 cout << "Deletar pelo ID: ";
                 getline(cin, procurar_ID);
                 CRUD.DeletarItem(procurar_ID, escolha_pesquisa2);
-                system("CLS");
+                //system("CLS");
                 break;
             }
 
@@ -93,7 +93,7 @@ int main() {
                 cout << "Deletar pelo Nome: ";
                 getline(cin, procurar_Nome);
                 CRUD.DeletarItem(procurar_Nome, escolha_pesquisa2);
-                system("CLS");
+                //system("CLS");
                 break;
             }
 
@@ -145,7 +145,7 @@ int main() {
 
   } while (escolha != 7); //Sair
 
-  system("CLS");
+  //system("CLS");
   CRUD.SaveToFile();
   cout << "Salvando no arquivo..." << endl;
   

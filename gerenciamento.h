@@ -69,16 +69,25 @@ void InserirItem(){
       getline(std::cin, id_item);
       cout << "--> Nome do Item: ";
       getline(std::cin, nome);
-      cout << "|=================================|" << endl;
-      cout << "|        Tipos de Produtos        |" << endl;
-      cout << "|=================================|" << endl;
-      cout << "| --> Roupa = 1                   |" << endl;
-      cout << "| --> Acessório = 1               |" << endl;
-      cout << "| --> Pelúcia = 1                 |" << endl;
-      cout << "| --> Bordado = 1                 |" << endl;
-      cout << "|=================================|" << endl;
-      cout << "--> Escolha o tipo de produto desejado: ";
-      cin >> tipo_produto;
+      do {
+
+        cout << "|=================================|" << endl;
+        cout << "|        Tipos de Produtos        |" << endl;
+        cout << "|=================================|" << endl;
+        cout << "| --> Roupa = 1                   |" << endl;
+        cout << "| --> Acessório = 1               |" << endl;
+        cout << "| --> Pelúcia = 1                 |" << endl;
+        cout << "| --> Bordado = 1                 |" << endl;
+        cout << "|=================================|" << endl;
+        cout << "--> Escolha o tipo de produto desejado: ";
+        cin >> tipo_produto;
+
+        if (tipo_produto < 1 || tipo_produto > 4) {
+                cout << "Tipo inválido, tente novamente!" << endl;
+            }
+
+      } while (tipo_produto < 1 || tipo_produto > 4);
+
       cout << "--> Insira o valor a ser cobrado: ";
       cin >> preco;
       cout << "--> Insira a descrição do produto: ";
@@ -96,7 +105,7 @@ void InserirItem(){
             char xtamanho;
             string xmaterial, xtipo, xcor;
 
-            if (tipo_produto == 1){
+            if (tipo_produto == 1) {
                 cout << "Para concluir a inserção informe atributos especificos do tipo Roupa" << endl;
                 cin.ignore();
                 cout << "Informe o tamanho: " << endl;
@@ -111,7 +120,9 @@ void InserirItem(){
 
                 mercadorias[i] = new Roupa(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xtamanho, xmaterial, xtipo, xcor);
             
-            }else if (tipo_produto == 2){
+            }
+            
+            else if (tipo_produto == 2){
                 cout << "Para concluir a inserção informe atributos especificos do tipo Acessorio" << endl;
                 cin.ignore();
                 cout << "Informe o material: " << endl;
@@ -121,7 +132,9 @@ void InserirItem(){
 
                 mercadorias[i] = new Acessorio(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xmaterial, xtipo);
 
-            }else if (tipo_produto == 3){
+            }
+            
+            else if (tipo_produto == 3){
                 cout << "Para concluir a inserção informe atributos especificos do tipo Pelucia" << endl;
                 cin.ignore();
                 cout << "Informe o material: " << endl;
@@ -132,22 +145,22 @@ void InserirItem(){
 
                 mercadorias[i] = new Pelucia(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xmaterial, xtamanho);
             
-            }else if (tipo_produto == 4){
+            }
+            
+            else if (tipo_produto == 4){
                 cout << "Para concluir a inserção informe atributos especificos do tipo Bordados" << endl;
                 cout << "Informe o tamanho: " << endl;
                 cin >> xtamanho;
                 cin.ignore();
                 mercadorias[i] = new Bordados(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xtamanho);
-            }else{
-                cout << "Tipo inválido, tente novamente!" << endl;
-            }
-            }
-        break;
+             }
         }
+        break;
+    }
     }
 
     void Estoque(){
-      system("CLS");
+      //system("CLS");
       cout << "Estoque" << endl;
       cout << "==========================================" << endl;
 
@@ -170,7 +183,7 @@ void InserirItem(){
     void ProcurarItem(string pesquisa, int escolha){
         //Procura por ID
       if(escolha == 1) {
-          system("CLS");
+          //system("CLS");
           cout << "Produtos Correspondentes à Pesquisa" << endl;
           cout << "==========================================" << endl;
           int counter = 0;
@@ -192,7 +205,7 @@ void InserirItem(){
 
       //Procura por Nome
       else if(escolha == 2) {
-          system("CLS");
+          //system("CLS");
           cout << "Produtos Correspondentes à Pesquisa" << endl;
           cout << "==========================================" << endl;
           int counter = 0;

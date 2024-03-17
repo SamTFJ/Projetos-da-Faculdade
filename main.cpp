@@ -9,13 +9,13 @@
 using namespace std;
 
 int main() {
-  CRUD CRUD;
+  CRUD* CRUD = new class CRUD();
 
   int escolha = 0;
   string procurar_ID;
   string procurar_Nome;
   //system("CLS");
-  CRUD.AbrirArquivo();
+  CRUD->AbrirArquivo();
 
   do
   {
@@ -38,7 +38,7 @@ int main() {
     {
         //Inserir
         case 1:
-            CRUD.InserirItem();
+            CRUD->InserirItem();
             //system("CLS");
             break;
 
@@ -53,7 +53,7 @@ int main() {
                 cin.ignore();
                 cout << "Atualizar pelo ID: ";
                 getline(cin, procurar_ID);
-                CRUD.AtualizarItem(procurar_ID, escolha_pesquisa1);
+                CRUD->AtualizarItem(procurar_ID, escolha_pesquisa1);
                 break;
             }
 
@@ -62,7 +62,7 @@ int main() {
                 cin.ignore();
                 cout << "Atualizar pelo Nome: ";
                 getline(cin, procurar_Nome);
-                CRUD.AtualizarItem(procurar_Nome, escolha_pesquisa1);
+                CRUD->AtualizarItem(procurar_Nome, escolha_pesquisa1);
                 break;
             }
 
@@ -82,7 +82,7 @@ int main() {
                 cin.ignore();
                 cout << "Deletar pelo ID: ";
                 getline(cin, procurar_ID);
-                CRUD.DeletarItem(procurar_ID, escolha_pesquisa2);
+                CRUD->DeletarItem(procurar_ID, escolha_pesquisa2);
                 //system("CLS");
                 break;
             }
@@ -92,7 +92,7 @@ int main() {
                 cin.ignore();
                 cout << "Deletar pelo Nome: ";
                 getline(cin, procurar_Nome);
-                CRUD.DeletarItem(procurar_Nome, escolha_pesquisa2);
+                CRUD->DeletarItem(procurar_Nome, escolha_pesquisa2);
                 //system("CLS");
                 break;
             }
@@ -113,7 +113,7 @@ int main() {
                 cin.ignore();
                 cout << "Pesquisar pelo ID: ";
                 getline(cin, procurar_ID);
-                CRUD.ProcurarItem(procurar_ID, escolha_pesquisa3);
+                CRUD->ProcurarItem(procurar_ID, escolha_pesquisa3);
                 break;
             }
 
@@ -122,7 +122,7 @@ int main() {
                 cin.ignore();
                 cout << "Pesquisar pelo Nome: ";
                 getline(cin, procurar_Nome);
-                CRUD.ProcurarItem(procurar_Nome, escolha_pesquisa3);
+                CRUD->ProcurarItem(procurar_Nome, escolha_pesquisa3);
                 break;
             }
 
@@ -133,7 +133,7 @@ int main() {
 
         //Listar
         case 5:
-            CRUD.Estoque();
+            CRUD->Estoque();
             break;
 
         //Mostrar Relatório
@@ -146,8 +146,9 @@ int main() {
   } while (escolha != 7); //Sair
 
   //system("CLS");
-  CRUD.SaveToFile();
+  CRUD->SaveToFile();
   cout << "Salvando no arquivo..." << endl;
+  delete CRUD;
   
   return 0;
 }

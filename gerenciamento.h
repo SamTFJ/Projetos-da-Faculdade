@@ -75,9 +75,9 @@ void InserirItem(){
         cout << "|        Tipos de Produtos        |" << endl;
         cout << "|=================================|" << endl;
         cout << "| --> Roupa = 1                   |" << endl;
-        cout << "| --> Acessório = 1               |" << endl;
-        cout << "| --> Pelúcia = 1                 |" << endl;
-        cout << "| --> Bordado = 1                 |" << endl;
+        cout << "| --> Acessório = 2               |" << endl;
+        cout << "| --> Pelúcia = 3                 |" << endl;
+        cout << "| --> Bordado = 4                 |" << endl;
         cout << "|=================================|" << endl;
         cout << "--> Escolha o tipo de produto desejado: ";
         cin >> tipo_produto;
@@ -162,14 +162,14 @@ void InserirItem(){
     void Estoque(){
       //system("CLS");
       cout << "Estoque" << endl;
-      cout << "==========================================" << endl;
+      cout << "==============================================================" << endl;
 
       int counter = 0;
-      cout << " No.  |   ID   |         NOME        " << endl << "------------------------------------------\n";
+      cout << " No.  |   ID   |           NOME           |      PREÇO        " << endl << "-------------------------------------------------------------------\n";
       for (int i = 0; i < qtd_mercadorias; i++) {
           if (ItemID[i] != "\0") {
               counter++;
-              cout << " " << counter << "        " << ItemID[i] << "            " << ItemName[i] << endl;
+              cout << " " << counter << "        " << ItemID[i] << "            " << ItemName[i] << "       R$" << mercadorias[i]->getPreco() << endl;
           }
       }
 
@@ -177,7 +177,7 @@ void InserirItem(){
           cout << "Estoque Vazio!" << endl;
       }
 
-      cout << "=========================================" << endl;
+      cout << "==============================================================" << endl;
     }
 
     void ProcurarItem(string pesquisa, int escolha){

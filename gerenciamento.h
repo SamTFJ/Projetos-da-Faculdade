@@ -162,14 +162,14 @@ void InserirItem(){
     void Estoque(){
       //system("CLS");
       cout << "Estoque" << endl;
-      cout << "==============================================================" << endl;
+      cout << "====================================================================================" << endl;
 
       int counter = 0;
-      cout << " No.  |   ID   |           NOME           |      PREÇO        " << endl << "-------------------------------------------------------------------\n";
+      cout << " No.  |   ID   |           NOME           |      PREÇO        |      QTD_ESTOQUE" << endl << "------------------------------------------------------------------------------------\n";
       for (int i = 0; i < qtd_mercadorias; i++) {
           if (ItemID[i] != "\0") {
               counter++;
-              cout << " " << counter << "        " << ItemID[i] << "            " << ItemName[i] << "       R$" << mercadorias[i]->getPreco() << endl;
+              cout << " " << counter << "        " << ItemID[i] << "            " << ItemName[i] << "       R$" << mercadorias[i]->getPreco() << "         " << mercadorias[i]->getQtdEstoque() << " und. " << endl;
           }
       }
 
@@ -177,7 +177,7 @@ void InserirItem(){
           cout << "Estoque Vazio!" << endl;
       }
 
-      cout << "==============================================================" << endl;
+      cout << "====================================================================================" << endl;
     }
 
     void ProcurarItem(string pesquisa, int escolha){
@@ -192,7 +192,7 @@ void InserirItem(){
 
               if (ItemID[i] == pesquisa) {
                   counter++;
-                  cout << "   " << counter << "    " << ItemID[i] << "             " << ItemName[i] << endl;
+                  cout << "   " << counter << "    " << mercadorias[i]->getIDProduto() << "             " << mercadorias[i]->getNome() << endl;
                   cout << "==========================================" << endl;
                   break;
               }

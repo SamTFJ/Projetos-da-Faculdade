@@ -26,12 +26,14 @@ class Produto {
       void setDescricao(string descricao);
       void setQtdEstoque(int qtd_estoque);
       void setTipoProduto(int tipo_produto);
+      void setIDProduto(string id_produto);
 
       string getNome();
       float getPreco();
       string getDescricao();
       int getQtdEstoque();
       int getTipoProduto();
+      string getIDProduto();
 
 
     public:

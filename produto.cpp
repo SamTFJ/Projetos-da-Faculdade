@@ -25,14 +25,18 @@ using namespace std;
    m_descricao = desc;
   }
   void Produto::setQtdEstoque(int qtd_estoque){
-  m_qtd_estoque = qtd_estoque;
+   m_qtd_estoque = qtd_estoque;
   }
   void Produto::setTipoProduto(int tipo_produto) {
-  m_tipo_produto = tipo_produto;
-    //Tipo para Roupa = 1
-    //Tipo para Acessorio = 2
-    //Tipo para Pelucia = 3
-    //Tipo para Bordado = 4
+   m_tipo_produto = tipo_produto;
+     //Tipo para Roupa = 1
+     //Tipo para Acessorio = 2
+     //Tipo para Pelucia = 3
+     //Tipo para Bordado = 4
+  }
+
+  void Produto::setIDProduto(string id_produto)  {
+    m_id_produto = id_produto;
   }
 
 
@@ -54,4 +58,8 @@ using namespace std;
 
   int Produto::getTipoProduto() {
     return m_tipo_produto;
+  }
+
+  string Produto::getIDProduto() {
+    return m_id_produto;
   }

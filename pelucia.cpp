@@ -51,9 +51,10 @@ void Pelucia::atualizarItem() {
     int xquant;
     float xpreco;
     string xdia, xmes, xano;
-    
+
     switch (opcao){
     case 1:
+      cin.ignore();
       cout << "--> Insira o nome atualizado: ";
       getline(cin, xnome);
       Pelucia::setNome(xnome);
@@ -71,7 +72,6 @@ void Pelucia::atualizarItem() {
     case 3:
       cout << "--> Insira o preço atualizado: ";
       cin >> xpreco;
-      cin.ignore();
       Pelucia::setPreco(xpreco);
       condicao = 0;
       break;
@@ -87,7 +87,6 @@ void Pelucia::atualizarItem() {
     case 5:
       cout << "--> Insira a quantidade no estoque atualizada: ";
       cin >> xquant;
-      cin.ignore();
       Pelucia::setQtdEstoque(xquant);
       condicao = 0;
       break;

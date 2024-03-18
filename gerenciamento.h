@@ -16,7 +16,7 @@ using namespace std;
 const int qtd_mercadorias = 100;
 
 class CRUD {
-  
+
   private:
         string ItemName[qtd_mercadorias] = {};
         string ItemID[qtd_mercadorias] = {};
@@ -24,7 +24,7 @@ class CRUD {
 
   public:
     ~CRUD() {
-      
+
     }
 
     void AbrirArquivo(){
@@ -68,7 +68,7 @@ class CRUD {
       int tipo_produto;
       string dia, mes, ano;
       Data data_fabricacao;
-      
+
 
       //Pegando os Inputs para o objeto Produto
       cout << "|=================================|" << endl;
@@ -95,13 +95,13 @@ class CRUD {
           cout << "| --> Bordado = 4                 |" << endl;
           cout << "|=================================|" << endl;
           cout << "--> Escolha o tipo de produto desejado: ";
-  
+
           if (!(cin >> tipo_produto) || cin.peek() != '\n') {
               cout << "Tipo inválido, tente novamente!" << endl;
               cin.clear();
               cin.ignore(numeric_limits<streamsize>::max(),'\n');
             } 
-          
+
           else {
             switch(tipo_produto) {
               case 1:
@@ -117,7 +117,7 @@ class CRUD {
             }
         } while (control != 0);
 
-      
+
       cout << "--> Insira o valor a ser cobrado: ";
       cin >> preco;
       cin.ignore();
@@ -125,9 +125,9 @@ class CRUD {
       getline(cin, descricao);
       cout << "--> Diga quantos produtos do mesmo tipo serão adicionados: ";
       cin >> qtd_estoque;
-      
+
       cin.ignore();
-      
+
       cout << "--> Informe a data de fabricação do produto --> Dia: ";
       getline(cin, dia);
       cout << "--> Informe a data de fabricação do produto --> Mes: ";
@@ -139,14 +139,14 @@ class CRUD {
       data_fabricacao.setAno(ano);
 
         for (int i = 0; i < qtd_mercadorias; i++) {
-            if (mercadorias[i] == nullptr) {
+            if (ItemID[i].empty()) {
               ItemID[i] = id_item;
               ItemName[i] = nome;
 
             //Alterado para fazer um casting implicito e, ao invés de criar um objeto antes de testar o tipo, o objeto é criado depois
               string xtamanho;
               string xmaterial, xtipo, xcor;
-  
+
               if (tipo_produto == 1) {
                   cout << "--> Para concluir a inserção informe atributos especificos do tipo Roupa" << endl;
                   cout << "--> Informe o tamanho: ";
@@ -157,33 +157,33 @@ class CRUD {
                   getline(cin, xtipo);
                   cout << "--> Informe a cor: ";
                   getline(cin, xcor);
-  
+
                   mercadorias[i] = new Roupa(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, data_fabricacao, xtamanho, xmaterial, xtipo, xcor);
-              
+
               }
-              
+
               else if (tipo_produto == 2) {
                   cout << "--> Para concluir a inserção informe atributos especificos do tipo Acessorio" << endl;
                   cout << "--> Informe o material: ";
                   getline(cin, xmaterial);
                   cout << "--> Informe o tipo: ";
                   getline(cin, xtipo);
-  
+
                   mercadorias[i] = new Acessorio(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, data_fabricacao, xmaterial, xtipo);
-  
+
               }
-              
+
               else if (tipo_produto == 3) {
                   cout << "--> Para concluir a inserção informe atributos especificos do tipo Pelucia" << endl;
                   cout << "--> Informe o material: ";
                   getline(cin, xmaterial);
                   cout << "--> Informe o tamanho: ";
                   getline(cin, xtamanho);
-  
+
                   mercadorias[i] = new Pelucia(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, data_fabricacao, xmaterial, xtamanho);
-              
+
               }
-              
+
               else if (tipo_produto == 4) {
                   cout << "--> Para concluir a inserção informe atributos especificos do tipo Bordados" << endl;
                   cout << "--> Informe o tamanho: ";
@@ -204,9 +204,9 @@ class CRUD {
       cout << " No.  |   ID   |           NOME           |       PREÇO        |      QTD_ESTOQUE       |       FABRICAÇÃO" << endl;
       cout << "-----------------------------------------------------------------------------------------------------------------\n";
       for (int i = 0; i < qtd_mercadorias; i++) {
-          if (mercadorias[i] != nullptr) {
+          if (!ItemID[i].empty()) {
               counter++;
-              cout << " " << counter << "        " << mercadorias[i]->getIDProduto() << "            " << ItemName[i] << "                R$ " << mercadorias[i]->getPreco() << "                 " << mercadorias[i]->getQtdEstoque() << " und. " << "                 " << mercadorias[i]->getDataDeFabricacao() << endl;
+              cout << " " << counter << "        " << mercadorias[i]->getIDProduto() << "            " << mercadorias[i]->getNome() << "                R$ " << mercadorias[i]->getPreco() << "                 " << mercadorias[i]->getQtdEstoque() << " und. " << "                 " << mercadorias[i]->getDataDeFabricacao() << endl;
           }
       }
 
@@ -257,7 +257,7 @@ class CRUD {
               for (char& pesquisa_c : pesquisa) {
                   pesquisa_c = tolower(pesquisa_c);
               }
-                  
+
               //Comparação
               auto it = find(item_name_comparation.begin(), item_name_comparation.end(), pesquisa[0]);
               if (it != item_name_comparation.end()) {
@@ -279,7 +279,7 @@ class CRUD {
       if(escolha == 1) {
           string new_name;
           int counter = 0;
-    
+
           for (int i = 0; i < qtd_mercadorias; i++) {
               if (mercadorias[i]->getIDProduto() == pesquisa) {
                   counter++;
@@ -287,37 +287,38 @@ class CRUD {
                   ItemName[i] = mercadorias[i]->getNome();
                   ItemID[i] = mercadorias[i]->getIDProduto();
                   cout << "Atualização completa!" << endl;
+                  break;
               }
           }
-    
+
           if (counter == 0) {
               cout << "ID não encontrado!" << endl;
           }
       }
-    
+
       //Procura por Nome
       else if(escolha == 2) {
           string new_name;
           int counter = 0;
-    
-          for (int i = 0; i < qtd_mercadorias; i++) {   
+
+        for (int i = 0; i < qtd_mercadorias; i++) {   
               //Comparação
               string item_name_comparation = mercadorias[i]->getNome();
               auto it = find(item_name_comparation.begin(), item_name_comparation.end(), pesquisa[0]);
-    
-              if (it != item_name_comparation.end()) {
-                  counter++;
-                  mercadorias[i]->atualizarItem();
-                  ItemName[i] = mercadorias[i]->getNome();
-                  ItemID[i] = mercadorias[i]->getIDProduto();
-                  cout << "Atualização completa!" << endl;
-                  break;
-              }
-    
-              if (counter == 0) {
-                  cout << "Nenhum produto encontrado!" << endl;
-              }
-          }
+
+            if (it != item_name_comparation.end()) {
+                counter++;
+                mercadorias[i]->atualizarItem();
+                ItemName[i] = mercadorias[i]->getNome();
+                ItemID[i] = mercadorias[i]->getIDProduto();
+                cout << "Atualização completa!" << endl;
+                break;
+            }
+        }
+
+        if (counter == 0) {
+                cout << "Nenhum produto encontrado!" << endl;
+        }
       }
   }
 
@@ -327,7 +328,7 @@ class CRUD {
           int counter = 0;
 
           for (int i = 0; i < qtd_mercadorias; i++) {
-                  
+
               if (mercadorias[i]->getIDProduto() == pesquisa) {
                   counter++;
 
@@ -375,6 +376,26 @@ class CRUD {
     }
 
     void Relatorio() {
-      
+      float valor_estoque = 0;
+      int qtd_total_produtos = 0;
+
+        for(int i = 0; i < qtd_mercadorias; i++) {
+            if(!ItemID[i].empty()) {
+            valor_estoque += (mercadorias[i]->getPreco() * mercadorias[i]->getQtdEstoque());
+            }
+        }
+
+        for(int i = 0; i < qtd_mercadorias; i++) {
+            if(!ItemID[i].empty()) {
+            qtd_total_produtos += mercadorias[i]->getQtdEstoque();
+            }
+        }
+      cout << "========================================================" << endl;
+      cout << "               --> RELATÓRIO GERAL <--                  " << endl;
+      cout << "========================================================" << endl;
+      cout << "     VALOR DO ESTOQUE        |    QTD. TOTAL DO ESTOQUE " << endl;
+      cout << "--------------------------------------------------------\n";
+      cout << "            R$" << valor_estoque << "                       " << qtd_total_produtos << endl;
+      cout << "========================================================" << endl;
     }
 };

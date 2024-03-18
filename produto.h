@@ -22,7 +22,7 @@ class Produto {
       ~Produto ();
 
       Produto (string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao);
-      
+
       void setNome(string nome);
       void setPreco(float preco);
       void setDescricao(string descricao);
@@ -40,7 +40,7 @@ class Produto {
       int getTipoProduto();
       string getIDProduto();
       string getDataDeFabricacao();
-    
+
 };
 
 #endif 

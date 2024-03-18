@@ -83,7 +83,7 @@ int main() {
                 cout << "--> Deletar pelo ID: ";
                 getline(cin, procurar_ID);
                 CRUD->DeletarItem(procurar_ID, escolha_pesquisa2);
-                //system("CLS");
+                system("CLS");
                 break;
             }
 
@@ -133,11 +133,14 @@ int main() {
 
         //Listar
         case 5:
+            //system ("CLS");
             CRUD->Estoque();
             break;
 
         //Mostrar Relatório
         case 6:
+            //system ("CLS");
+            CRUD->Relatorio();
             break;
 
 
@@ -145,10 +148,10 @@ int main() {
 
   } while (escolha != 7); //Sair
 
-  //system("CLS");
+  system("CLS");
   CRUD->SaveToFile();
   cout << "Salvando no arquivo..." << endl;
   delete CRUD;
-  
+
   return 0;
 }

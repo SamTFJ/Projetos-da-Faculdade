@@ -42,7 +42,7 @@ using namespace std;
     int xquant;
     float xpreco;
     string xdia, xmes, xano;
-    
+
     switch (opcao){
       case 1:
         cin.ignore();
@@ -51,7 +51,7 @@ using namespace std;
         Bordados::setNome(xnome);
         condicao = 0;
         break;
-  
+
       case 2:
         cin.ignore();
         cout << "--> Insira o ID atualizado: ";
@@ -59,15 +59,14 @@ using namespace std;
         Bordados::setIDProduto(xid);
         condicao = 0;
         break;
-  
+
       case 3:
         cout << "--> Insira o preço atualizado: ";
         cin >> xpreco;
-        cin.ignore();
         Bordados::setPreco(xpreco);
         condicao = 0;
         break;
-  
+
       case 4:
         cin.ignore();
         cout << "--> Insira a descrição atualizada: ";
@@ -75,15 +74,14 @@ using namespace std;
         Bordados::setDescricao(xdescricao);
         condicao = 0;
         break;
-  
+
       case 5:
         cout << "--> Insira a quantidade no estoque atualizada: ";
         cin >> xquant;
-        cin.ignore();
         Bordados::setQtdEstoque(xquant);
         condicao = 0;
         break;
-  
+
       case 6:
         cin.ignore();
         cout << "--> Insira o tamanho atualizado: ";
@@ -91,7 +89,7 @@ using namespace std;
         Bordados::setTamanho(xtamanho);
         condicao = 0;
         break;
-  
+
       case 7:
         cin.ignore();
         cout << "--> Insira a data de fabricação atualizada: ";
@@ -101,12 +99,12 @@ using namespace std;
         Bordados::setDataDeFabricacao(xdia, xmes, xano);
         condicao = 0;
         break;
-  
+
       case 8:
         cout << "Operação cancelada" << endl;
         condicao = 0;
         break;
-  
+
       default:
         cout << "Opção inválida, tente novamente!" << endl;
         break;

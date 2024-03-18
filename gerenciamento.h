@@ -1,9 +1,11 @@
 #include <iostream>
+#include <limits>
 #include <string>
 #include <fstream>
 #include <cctype>
 #include <algorithm>
 #include <ctype.h>
+#include <variant>
 #include "produto.h"
 #include "acessorio.h"
 #include "roupa.h"
@@ -15,7 +17,8 @@ using namespace std;
 const int qtd_mercadorias = 100;
 
 class CRUD {
-    private:
+  
+  private:
         string ItemName[qtd_mercadorias] = {};
         string ItemID[qtd_mercadorias] = {};
         Produto** mercadorias = new Produto*[qtd_mercadorias];
@@ -55,22 +58,32 @@ class CRUD {
       }
     }
 
-void InserirItem(){
+    void InserirItem(){
       string nome;
       string id_item;
       float preco;
       string descricao;
       int qtd_estoque;
       int tipo_produto;
+      
 
       //Pegando os Inputs para o objeto Produto
+      cout << "|=================================|" << endl;
+      cout << "|           Tipos de ID           |" << endl;
+      cout << "|=================================|" << endl;
+      cout << "| --> Roupa = RP(Número)          |" << endl;
+      cout << "| --> Acessório = AC(Número)      |" << endl;
+      cout << "| --> Pelúcia = PL(Número)        |" << endl;
+      cout << "| --> Bordado = BD(Número)        |" << endl;
+      cout << "|=================================|" << endl;
+      cout << "--> Escolha o tipo de produto desejado: ";
       cout << "--> ID do Item: ";
       cin.ignore();
-      getline(std::cin, id_item);
+      getline(cin, id_item);
       cout << "--> Nome do Item: ";
-      getline(std::cin, nome);
+      getline(cin, nome);
+      int control = 1;
       do {
-
         cout << "|=================================|" << endl;
         cout << "|        Tipos de Produtos        |" << endl;
         cout << "|=================================|" << endl;
@@ -80,14 +93,29 @@ void InserirItem(){
         cout << "| --> Bordado = 4                 |" << endl;
         cout << "|=================================|" << endl;
         cout << "--> Escolha o tipo de produto desejado: ";
-        cin >> tipo_produto;
 
-        if (tipo_produto < 1 || tipo_produto > 4) {
-                cout << "Tipo inválido, tente novamente!" << endl;
-            }
+        if (!(cin >> tipo_produto) || cin.peek() != '\n') {
+            cout << "Tipo inválido, tente novamente!" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          } 
+        
+        else {
+          switch(tipo_produto) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+              control = 0;
+              break;
+            default:
+              cout << "Tipo inválido, tente novamente!" << endl;
+              break;
+              }
+          }
+      } while (control != 0);
 
-      } while (tipo_produto < 1 || tipo_produto > 4);
-
+      
       cout << "--> Insira o valor a ser cobrado: ";
       cin >> preco;
       cout << "--> Insira a descrição do produto: ";
@@ -102,20 +130,19 @@ void InserirItem(){
             ItemName[i] = nome;
 
             //Alterado para fazer um casting implicito e, ao invés de criar um objeto antes de testar o tipo, o objeto é criado depois
-            char xtamanho;
+            string xtamanho;
             string xmaterial, xtipo, xcor;
 
             if (tipo_produto == 1) {
-                cout << "Para concluir a inserção informe atributos especificos do tipo Roupa" << endl;
+                cout << "--> Para concluir a inserção informe atributos especificos do tipo Roupa" << endl;
                 cin.ignore();
-                cout << "Informe o tamanho: " << endl;
-                cin >> xtamanho;
-                cin.ignore();
-                cout << "Informe o material: " << endl;
+                cout << "--> Informe o tamanho: ";
+                getline(cin, xtamanho);
+                cout << "--> Informe o material: ";
                 getline(cin, xmaterial);
-                cout << "Informe o tipo: " << endl;
+                cout << "--> Informe o tipo: ";
                 getline(cin, xtipo);
-                cout << "Informe a cor: " << endl;
+                cout << "--> Informe a cor: ";
                 getline(cin, xcor);
 
                 mercadorias[i] = new Roupa(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xtamanho, xmaterial, xtipo, xcor);
@@ -123,11 +150,11 @@ void InserirItem(){
             }
             
             else if (tipo_produto == 2){
-                cout << "Para concluir a inserção informe atributos especificos do tipo Acessorio" << endl;
+                cout << "--> Para concluir a inserção informe atributos especificos do tipo Acessorio" << endl;
                 cin.ignore();
-                cout << "Informe o material: " << endl;
+                cout << "--> Informe o material: ";
                 getline(cin, xmaterial);
-                cout << "Informe o tipo: " << endl;
+                cout << "--> Informe o tipo: ";
                 getline(cin, xtipo);
 
                 mercadorias[i] = new Acessorio(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xmaterial, xtipo);
@@ -135,23 +162,22 @@ void InserirItem(){
             }
             
             else if (tipo_produto == 3){
-                cout << "Para concluir a inserção informe atributos especificos do tipo Pelucia" << endl;
+                cout << "--> Para concluir a inserção informe atributos especificos do tipo Pelucia" << endl;
                 cin.ignore();
-                cout << "Informe o material: " << endl;
+                cout << "--> Informe o material: ";
                 getline(cin, xmaterial);
-                cout << "Informe o tamanho: " << endl;
-                cin >> xtamanho;
-                cin.ignore();
+                cout << "--> Informe o tamanho: ";
+                getline(cin, xtamanho);
 
                 mercadorias[i] = new Pelucia(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xmaterial, xtamanho);
             
             }
             
             else if (tipo_produto == 4){
-                cout << "Para concluir a inserção informe atributos especificos do tipo Bordados" << endl;
-                cout << "Informe o tamanho: " << endl;
-                cin >> xtamanho;
+                cout << "--> Para concluir a inserção informe atributos especificos do tipo Bordados" << endl;
                 cin.ignore();
+                cout << "--> Informe o tamanho: ";
+                getline(cin, xtamanho);
                 mercadorias[i] = new Bordados(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xtamanho);
              }
         }
@@ -159,17 +185,18 @@ void InserirItem(){
     }
     }
 
-    void Estoque(){
+    void Estoque() {
       //system("CLS");
       cout << "Estoque" << endl;
       cout << "====================================================================================" << endl;
 
       int counter = 0;
-      cout << " No.  |   ID   |           NOME           |      PREÇO        |      QTD_ESTOQUE" << endl << "------------------------------------------------------------------------------------\n";
+      cout << " No.  |   ID   |           NOME           |      PREÇO        |      QTD_ESTOQUE" << endl;
+      cout << "------------------------------------------------------------------------------------\n";
       for (int i = 0; i < qtd_mercadorias; i++) {
           if (ItemID[i] != "\0") {
               counter++;
-              cout << " " << counter << "        " << ItemID[i] << "            " << ItemName[i] << "       R$" << mercadorias[i]->getPreco() << "         " << mercadorias[i]->getQtdEstoque() << " und. " << endl;
+              cout << " " << counter << "        " << mercadorias[i]->getIDProduto() << "            " << ItemName[i] << "                R$ " << mercadorias[i]->getPreco() << "               " << mercadorias[i]->getQtdEstoque() << " und. " << endl;
           }
       }
 
@@ -180,20 +207,20 @@ void InserirItem(){
       cout << "====================================================================================" << endl;
     }
 
-    void ProcurarItem(string pesquisa, int escolha){
+    void ProcurarItem(string pesquisa, int escolha) {
         //Procura por ID
       if(escolha == 1) {
           //system("CLS");
           cout << "Produtos Correspondentes à Pesquisa" << endl;
-          cout << "==========================================" << endl;
+          cout << "===========================================================" << endl;
           int counter = 0;
 
           for (int i = 0; i < qtd_mercadorias; i++) {
 
               if (ItemID[i] == pesquisa) {
                   counter++;
-                  cout << "   " << counter << "    " << mercadorias[i]->getIDProduto() << "             " << mercadorias[i]->getNome() << endl;
-                  cout << "==========================================" << endl;
+                  cout << "   " << counter << "    " << mercadorias[i]->getIDProduto() << "             " << mercadorias[i]->getNome() << "            R$ " << mercadorias[i]->getPreco() << endl;
+                  cout << "===========================================================" << endl;
                   break;
               }
 
@@ -207,7 +234,7 @@ void InserirItem(){
       else if(escolha == 2) {
           //system("CLS");
           cout << "Produtos Correspondentes à Pesquisa" << endl;
-          cout << "==========================================" << endl;
+          cout << "===========================================================" << endl;
           int counter = 0;
 
           for (int i = 0; i < qtd_mercadorias; i++) {   
@@ -225,13 +252,13 @@ void InserirItem(){
               auto it = find(item_name_comparation.begin(), item_name_comparation.end(), pesquisa[0]);
               if (it != item_name_comparation.end()) {
                   counter++;
-                  cout << "   " << counter << "    " << ItemID[i] << "             " << item_name_comparation << endl;
-                  cout << "==========================================" << endl;
+                  cout << "   " << counter << "    " << mercadorias[i]->getIDProduto() << "             " << mercadorias[i]->getNome() << "          R$ "<< mercadorias[i]->getPreco() << endl;
+                  cout << "===========================================================" << endl;
                   break;
               }
 
               if (counter == 0) {
-                  cout << "Nenhum produto encontrado!" << endl;
+                  cout << "Nenhum produto encontrado com esse nome!" << endl;
               }
             }
         }
@@ -290,7 +317,7 @@ void InserirItem(){
       }
     }
 
-    void DeletarItem(string pesquisa, int escolha){
+    void DeletarItem(string pesquisa, int escolha) {
         //Procura por ID
       if(escolha == 1) {
           int counter = 0;

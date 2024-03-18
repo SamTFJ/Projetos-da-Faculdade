@@ -24,6 +24,7 @@ class Pelucia : public Produto{
     void setTamanho(string tamanho);
     string getMaterial();
     string getTamanho();
+    void atualizarItem() override;
   
 };
 

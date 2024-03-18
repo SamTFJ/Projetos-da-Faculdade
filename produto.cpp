@@ -15,18 +15,19 @@ using namespace std;
     m_tipo_produto = tipo_produto;
   }
 
-  void Produto::setNome(string nome){
+  void Produto::setNome(string nome) {
    m_nome = nome;
   }
-  void Produto::setPreco(float preco){
+  void Produto::setPreco(float preco) {
    m_preco = preco;
   }
-  void Produto::setDescricao(string desc){
+  void Produto::setDescricao(string desc) {
    m_descricao = desc;
   }
-  void Produto::setQtdEstoque(int qtd_estoque){
+  void Produto::setQtdEstoque(int qtd_estoque) {
    m_qtd_estoque = qtd_estoque;
   }
+
   void Produto::setTipoProduto(int tipo_produto) {
    m_tipo_produto = tipo_produto;
      //Tipo para Roupa = 1
@@ -38,7 +39,6 @@ using namespace std;
   void Produto::setIDProduto(string id_produto)  {
     m_id_produto = id_produto;
   }
-
 
   string Produto::getNome() {
     return m_nome;
@@ -63,3 +63,5 @@ using namespace std;
   string Produto::getIDProduto() {
     return m_id_produto;
   }
+
+  void Produto::atualizarItem() {};

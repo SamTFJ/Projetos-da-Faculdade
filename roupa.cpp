@@ -6,7 +6,7 @@ using namespace std;
   Roupa::Roupa() {}
   Roupa::~Roupa() {}
 
-  Roupa::Roupa(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string tamanho, string material, string tipo, string cor) : Produto::Produto(nome, id_produto, preco, descricao, qtd_estoque, tipo_produto) {
+  Roupa::Roupa(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao, string tamanho, string material, string tipo, string cor) : Produto::Produto(nome, id_produto, preco, descricao, qtd_estoque, tipo_produto, data_de_fabricacao) {
     m_tamanho = tamanho;
     m_material = material;
     m_tipo = tipo;
@@ -60,7 +60,8 @@ using namespace std;
     cout << "| --> Material = 7                |" << endl;
     cout << "| --> Tipo = 8                    |" << endl;
     cout << "| --> Cor = 9                     |" << endl;
-    cout << "| --> Cancelar = 10               |" << endl;
+    cout << "| --> Data de Fabricação = 10     |" << endl;
+    cout << "| --> Cancelar = 11               |" << endl;
     cout << "|=================================|" << endl;
     cout << "--> Opção desejada: ";
     int opcao = 0;
@@ -70,6 +71,8 @@ using namespace std;
     string xtamanho;
     int xquant;
     float xpreco;
+    string xdia, xmes, xano;
+    
     switch (opcao){
     case 1:
       cin.ignore();
@@ -143,6 +146,16 @@ using namespace std;
       break;
 
     case 10:
+      cin.ignore();
+      cout << "--> Insira a data de fabricação atualizada: ";
+      getline(cin, xdia);
+      getline(cin, xmes);
+      getline(cin, xano);
+      Roupa::setDataDeFabricacao(xdia, xmes, xano);
+      condicao = 0;
+      break;
+
+    case 11:
       cout << "Operação cancelada" << endl;
       condicao = 0;
       break;

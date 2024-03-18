@@ -18,7 +18,7 @@ class Roupa : public Produto {
     Roupa();
     ~Roupa();
 
-    Roupa(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string tamanho, string material, string tipo, string cor);
+    Roupa(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao, string tamanho, string material, string tipo, string cor);
 
     void setTamanho(string tamanho);
     void setMaterial(string material);

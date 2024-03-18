@@ -6,13 +6,14 @@ using namespace std;
   Produto::Produto() {}
   Produto::~Produto() {}
 
-  Produto::Produto(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto) {
+  Produto::Produto(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao) {
     m_nome = nome;
     m_id_produto = id_produto;
     m_preco = preco;
     m_descricao = descricao;
     m_qtd_estoque = qtd_estoque;
     m_tipo_produto = tipo_produto;
+    m_data_de_fabricacao = data_de_fabricacao;
   }
 
   void Produto::setNome(string nome) {
@@ -40,8 +41,10 @@ using namespace std;
     m_id_produto = id_produto;
   }
 
-  void Produto::setDataDeFabricacao(Data data_de_fabricacao) {
-    m_data_de_fabricacao = data_de_fabricacao;
+  void Produto::setDataDeFabricacao(string dia, string mes, string ano) {
+    m_data_de_fabricacao.setDia(dia);
+    m_data_de_fabricacao.setMes(mes);
+    m_data_de_fabricacao.setAno(ano);
   }
 
   string Produto::getNome() {
@@ -68,8 +71,8 @@ using namespace std;
     return m_id_produto;
   }
 
-  Data Produto::getDataDeFabricacao() {
-    return m_data_de_fabricacao;
+  string Produto::getDataDeFabricacao() {
+    return m_data_de_fabricacao.getDia() + "/" +  m_data_de_fabricacao.getMes() + "/" + m_data_de_fabricacao.getAno();
   }
 
   void Produto::atualizarItem() {

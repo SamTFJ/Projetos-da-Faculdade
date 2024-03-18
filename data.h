@@ -13,6 +13,7 @@ class Data {
   public:
 
     Data();
+    Data(string dia, string mes, string ano);
     ~Data();
 
     void setDia(string dia);

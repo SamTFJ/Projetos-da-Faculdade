@@ -18,7 +18,7 @@ class Pelucia : public Produto{
     Pelucia();
     ~Pelucia();
 
-    Pelucia(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string material, string tamanho);
+    Pelucia(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao, string material, string tamanho);
 
     void setMaterial(string material);
     void setTamanho(string tamanho);

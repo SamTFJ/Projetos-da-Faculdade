@@ -76,53 +76,53 @@ class CRUD {
       cout << "| --> Pelúcia = PL(Número)        |" << endl;
       cout << "| --> Bordado = BD(Número)        |" << endl;
       cout << "|=================================|" << endl;
-      cout << "--> Escolha o tipo de produto desejado: ";
       cout << "--> ID do Item: ";
       cin.ignore();
       getline(cin, id_item);
       cout << "--> Nome do Item: ";
       getline(cin, nome);
       int control = 1;
-      do {
-        cout << "|=================================|" << endl;
-        cout << "|        Tipos de Produtos        |" << endl;
-        cout << "|=================================|" << endl;
-        cout << "| --> Roupa = 1                   |" << endl;
-        cout << "| --> Acessório = 2               |" << endl;
-        cout << "| --> Pelúcia = 3                 |" << endl;
-        cout << "| --> Bordado = 4                 |" << endl;
-        cout << "|=================================|" << endl;
-        cout << "--> Escolha o tipo de produto desejado: ";
-
-        if (!(cin >> tipo_produto) || cin.peek() != '\n') {
-            cout << "Tipo inválido, tente novamente!" << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-          } 
-        
-        else {
-          switch(tipo_produto) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-              control = 0;
-              break;
-            default:
+        do {
+          cout << "|=================================|" << endl;
+          cout << "|        Tipos de Produtos        |" << endl;
+          cout << "|=================================|" << endl;
+          cout << "| --> Roupa = 1                   |" << endl;
+          cout << "| --> Acessório = 2               |" << endl;
+          cout << "| --> Pelúcia = 3                 |" << endl;
+          cout << "| --> Bordado = 4                 |" << endl;
+          cout << "|=================================|" << endl;
+          cout << "--> Escolha o tipo de produto desejado: ";
+  
+          if (!(cin >> tipo_produto) || cin.peek() != '\n') {
               cout << "Tipo inválido, tente novamente!" << endl;
-              break;
-              }
-          }
-      } while (control != 0);
+              cin.clear();
+              cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            } 
+          
+          else {
+            switch(tipo_produto) {
+              case 1:
+              case 2:
+              case 3:
+              case 4:
+                control = 0;
+                break;
+              default:
+                cout << "Tipo inválido, tente novamente!" << endl;
+                break;
+                }
+            }
+        } while (control != 0);
 
       
       cout << "--> Insira o valor a ser cobrado: ";
       cin >> preco;
-      cout << "--> Insira a descrição do produto: ";
       cin.ignore();
+      cout << "--> Insira a descrição do produto: ";
       getline(cin, descricao);
       cout << "--> Diga quantos produtos do mesmo tipo serão adicionados: ";
       cin >> qtd_estoque;
+      cin.ignore();
 
         for (int i = 0; i < qtd_mercadorias; i++) {
             if (ItemID[i].empty()) {
@@ -135,7 +135,6 @@ class CRUD {
 
             if (tipo_produto == 1) {
                 cout << "--> Para concluir a inserção informe atributos especificos do tipo Roupa" << endl;
-                cin.ignore();
                 cout << "--> Informe o tamanho: ";
                 getline(cin, xtamanho);
                 cout << "--> Informe o material: ";
@@ -151,7 +150,6 @@ class CRUD {
             
             else if (tipo_produto == 2){
                 cout << "--> Para concluir a inserção informe atributos especificos do tipo Acessorio" << endl;
-                cin.ignore();
                 cout << "--> Informe o material: ";
                 getline(cin, xmaterial);
                 cout << "--> Informe o tipo: ";
@@ -163,7 +161,6 @@ class CRUD {
             
             else if (tipo_produto == 3){
                 cout << "--> Para concluir a inserção informe atributos especificos do tipo Pelucia" << endl;
-                cin.ignore();
                 cout << "--> Informe o material: ";
                 getline(cin, xmaterial);
                 cout << "--> Informe o tamanho: ";
@@ -175,7 +172,6 @@ class CRUD {
             
             else if (tipo_produto == 4){
                 cout << "--> Para concluir a inserção informe atributos especificos do tipo Bordados" << endl;
-                cin.ignore();
                 cout << "--> Informe o tamanho: ";
                 getline(cin, xtamanho);
                 mercadorias[i] = new Bordados(nome, id_item, preco, descricao, qtd_estoque, tipo_produto, xtamanho);
@@ -265,57 +261,51 @@ class CRUD {
     }
 
     void AtualizarItem(string pesquisa, int escolha){
-          //Procura por ID
-      if(escolha == 1) {
-          string new_name;
-          int counter = 0;
-
-          for (int i = 0; i < qtd_mercadorias; i++) {
-              if (ItemID[i] == pesquisa) {
-                  counter++;
-                  cout << "Novo Nome do Item: ";
-                  getline(cin, new_name);
-
-                  ItemName[i] = new_name;
-
-                  cout << "\n" << "Atualização Completa!\n\n";
-                  break;
-              }
-          }
-
-          if (counter == 0) {
-              cout << "ID não encontrado!" << endl;
-          }
-      }
-
-      //Procura por Nome
-      else if(escolha == 2) {
-          string new_name;
-          int counter = 0;
-
-          for (int i = 0; i < qtd_mercadorias; i++) {   
-              //Comparação
-              string item_name_comparation = ItemName[i];
-              auto it = find(item_name_comparation.begin(), item_name_comparation.end(), pesquisa[0]);
-
-              if (it != item_name_comparation.end()) {
-                  counter++;
-                  cout << "Novo Nome do Item: ";
-                  getline(cin, new_name);
-
-                  ItemName[i] = new_name;
-
-                  cout << "\n"
-                      << "Atualização Completa!\n\n";
-                  break;
-              }
-
-              if (counter == 0) {
-                  cout << "Nenhum produto encontrado!" << endl;
-              }
-          }
-      }
+        //Procura por ID
+    if(escolha == 1) {
+        string new_name;
+        int counter = 0;
+  
+        for (int i = 0; i < qtd_mercadorias; i++) {
+            if (ItemID[i] == pesquisa) {
+                counter++;
+                mercadorias[i]->atualizarItem();
+                ItemName[i] = mercadorias[i]->getNome();
+                ItemID[i] = mercadorias[i]->getIDProduto();
+                cout << "Atualização completa!" << endl;
+            }
+        }
+  
+        if (counter == 0) {
+            cout << "ID não encontrado!" << endl;
+        }
     }
+  
+    //Procura por Nome
+    else if(escolha == 2) {
+        string new_name;
+        int counter = 0;
+  
+        for (int i = 0; i < qtd_mercadorias; i++) {   
+            //Comparação
+            string item_name_comparation = ItemName[i];
+            auto it = find(item_name_comparation.begin(), item_name_comparation.end(), pesquisa[0]);
+  
+            if (it != item_name_comparation.end()) {
+                counter++;
+                mercadorias[i]->atualizarItem();
+                ItemName[i] = mercadorias[i]->getNome();
+                ItemID[i] = mercadorias[i]->getIDProduto();
+                cout << "Atualização completa!" << endl;
+                break;
+            }
+  
+            if (counter == 0) {
+                cout << "Nenhum produto encontrado!" << endl;
+            }
+        }
+    }
+  }
 
     void DeletarItem(string pesquisa, int escolha) {
         //Procura por ID
@@ -329,6 +319,7 @@ class CRUD {
 
                   ItemName[i] = "";
                   ItemID[i] = "";
+                  mercadorias[i] = nullptr;
 
                   cout << "Produto Deletado Completamente!\n\n";
                   break;
@@ -355,6 +346,7 @@ class CRUD {
 
                   ItemName[i] = "";
                   ItemID[i] = "";
+                  mercadorias[i] = nullptr;
 
                   cout << "Produto Deletado Completamente!\n\n";
                   break;

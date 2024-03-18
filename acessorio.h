@@ -23,6 +23,7 @@ class Acessorio : public Produto{
     void setTipo(string tipo);
     string getMaterial();
     string getTipo();
+    void atualizarItem() override;
 };
 
 #endif 

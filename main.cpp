@@ -31,7 +31,7 @@ int main() {
     cout << "|     7 - Sair e Salvar           |" << endl;
     cout << "|=================================|" << endl;
 
-    cout << "Escolha uma opção: ";
+    cout << "--> Escolha uma opção: ";
     cin >> escolha;
 
     switch (escolha)
@@ -45,13 +45,13 @@ int main() {
         //Atualizar
         case 2:
             int escolha_pesquisa1;
-            cout << "Atualizar pelo ID (1) ou pelo Nome (2):  ";
+            cout << "--> Atualizar pelo ID (1) ou pelo Nome (2):  ";
             cin >> escolha_pesquisa1;
 
             //Por ID
             if(escolha_pesquisa1 == 1) {
                 cin.ignore();
-                cout << "Atualizar pelo ID: ";
+                cout << "--> Atualizar pelo ID: ";
                 getline(cin, procurar_ID);
                 CRUD->AtualizarItem(procurar_ID, escolha_pesquisa1);
                 break;
@@ -60,7 +60,7 @@ int main() {
             //Por Nome
             else if(escolha_pesquisa1 == 2) {
                 cin.ignore();
-                cout << "Atualizar pelo Nome: ";
+                cout << "--> Atualizar pelo Nome: ";
                 getline(cin, procurar_Nome);
                 CRUD->AtualizarItem(procurar_Nome, escolha_pesquisa1);
                 break;
@@ -74,13 +74,13 @@ int main() {
         //Deletar
         case 3:
             int escolha_pesquisa2;
-            cout << "Deletar pelo ID (1) ou pelo Nome (2):  ";
+            cout << "--> Deletar pelo ID (1) ou pelo Nome (2):  ";
             cin >> escolha_pesquisa2;
 
             //Por ID
             if(escolha_pesquisa2 == 1) {
                 cin.ignore();
-                cout << "Deletar pelo ID: ";
+                cout << "--> Deletar pelo ID: ";
                 getline(cin, procurar_ID);
                 CRUD->DeletarItem(procurar_ID, escolha_pesquisa2);
                 //system("CLS");
@@ -90,7 +90,7 @@ int main() {
             //Por Nome
             else if(escolha_pesquisa2 == 2) {
                 cin.ignore();
-                cout << "Deletar pelo Nome: ";
+                cout << "--> Deletar pelo Nome: ";
                 getline(cin, procurar_Nome);
                 CRUD->DeletarItem(procurar_Nome, escolha_pesquisa2);
                 //system("CLS");
@@ -105,13 +105,13 @@ int main() {
         //Pesquisar
         case 4:
             int escolha_pesquisa3;
-            cout << "Pesquisar pelo ID (1) ou pelo Nome (2):  ";
+            cout << "--> Pesquisar pelo ID (1) ou pelo Nome (2):  ";
             cin >> escolha_pesquisa3;
 
             //Por ID
             if(escolha_pesquisa3 == 1) {
                 cin.ignore();
-                cout << "Pesquisar pelo ID: ";
+                cout << "--> Pesquisar pelo ID: ";
                 getline(cin, procurar_ID);
                 CRUD->ProcurarItem(procurar_ID, escolha_pesquisa3);
                 break;
@@ -120,7 +120,7 @@ int main() {
             //Por Nome
             else if(escolha_pesquisa3 == 2) {
                 cin.ignore();
-                cout << "Pesquisar pelo Nome: ";
+                cout << "--> Pesquisar pelo Nome: ";
                 getline(cin, procurar_Nome);
                 CRUD->ProcurarItem(procurar_Nome, escolha_pesquisa3);
                 break;

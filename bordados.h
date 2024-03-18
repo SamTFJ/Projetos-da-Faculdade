@@ -20,6 +20,7 @@ class Bordados : public Produto {
 
     void setTamanho(string tamanho);
     string getTamanho();
+    void atualizarItem() override;
 };
 
 #endif 

@@ -27,6 +27,7 @@ class Produto {
       void setQtdEstoque(int qtd_estoque);
       void setTipoProduto(int tipo_produto);
       void setIDProduto(string id_produto);
+      virtual void atualizarItem();
 
       string getNome();
       float getPreco();
@@ -34,9 +35,6 @@ class Produto {
       int getQtdEstoque();
       int getTipoProduto();
       string getIDProduto();
-
-
-    public:
     
 };
 

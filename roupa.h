@@ -28,6 +28,7 @@ class Roupa : public Produto {
     string getMaterial();
     string getTipo();
     string getCor();
+    void atualizarItem() override;
 };
 
 #endif 

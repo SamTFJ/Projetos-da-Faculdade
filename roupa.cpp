@@ -44,3 +44,112 @@ using namespace std;
   string Roupa::getCor() {
     return m_cor;
   }
+
+  void Roupa::atualizarItem() {
+  int condicao = 1;
+  do{
+    cout << "|=================================|" << endl;
+    cout << "|     O que deseja atualizar?     |" << endl;
+    cout << "|=================================|" << endl;
+    cout << "| --> Nome = 1                    |" << endl;
+    cout << "| --> ID = 2                      |" << endl;
+    cout << "| --> Preço = 3                   |" << endl;
+    cout << "| --> Descrição = 4               |" << endl;
+    cout << "| --> quantidade no estoque = 5   |" << endl;
+    cout << "| --> Tamanho = 6                 |" << endl;
+    cout << "| --> Material = 7                |" << endl;
+    cout << "| --> Tipo = 8                    |" << endl;
+    cout << "| --> Cor = 9                     |" << endl;
+    cout << "| --> Cancelar = 10               |" << endl;
+    cout << "|=================================|" << endl;
+    cout << "--> Opção desejada: ";
+    int opcao = 0;
+    cin >> opcao;
+
+    string xnome, xid, xdescricao, xmaterial, xtipo, xcor;
+    string xtamanho;
+    int xquant;
+    float xpreco;
+    switch (opcao){
+    case 1:
+      cin.ignore();
+      cout << "--> Insira o nome atualizado: ";
+      getline(cin, xnome);
+      Roupa::setNome(xnome);
+      condicao = 0;
+      break;
+
+    case 2:
+      cin.ignore();
+      cout << "--> Insira o ID atualizado: ";
+      getline(cin, xid);
+      Roupa::setIDProduto(xid);
+      condicao = 0;
+      break;
+
+    case 3:
+      cout << "--> Insira o preço atualizado: ";
+      cin >> xpreco;
+      cin.ignore();
+      Roupa::setPreco(xpreco);
+      condicao = 0;
+      break;
+
+    case 4:
+      cin.ignore();
+      cout << "--> Insira a descrição atualizada: ";
+      getline(cin, xdescricao);
+      Roupa::setDescricao(xdescricao);
+      condicao = 0;
+      break;
+
+    case 5:
+      cout << "--> Insira a quantidade no estoque atualizada: ";
+      cin >> xquant;
+      cin.ignore();
+      Roupa::setQtdEstoque(xquant);
+      condicao = 0;
+      break;
+
+    case 6:
+      cout << "--> Insira o tamanho atualizado: ";
+      getline(cin, xtamanho);
+      cin.ignore();
+      Roupa::setTamanho(xtamanho);
+      condicao = 0;
+      break;
+
+    case 7:
+      cout << "--> Insira o material atualizado: ";
+      getline(cin, xmaterial);
+      Roupa::setMaterial(xmaterial);
+      condicao = 0;
+      break;
+
+    case 8:
+      cin.ignore();
+      cout << "--> Insira o tipo atualizado: ";
+      getline(cin, xtipo);
+      Roupa::setTipo(xtipo);
+      condicao = 0;
+      break;
+
+    case 9:
+      cin.ignore();
+      cout << "--> Insira a cor atualizada: ";
+      getline(cin, xcor);
+      Roupa::setCor(xcor);
+      condicao = 0;
+      break;
+
+    case 10:
+      cout << "Operação cancelada" << endl;
+      condicao = 0;
+      break;
+
+    default:
+      cout << "Opção inválida, tente novamente!" << endl;
+      break;
+    }
+  }while(condicao);
+}

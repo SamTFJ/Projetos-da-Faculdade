@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "data.h"
 #ifndef PRODUTO_H
 #define PRODUTO_H
 
@@ -13,7 +14,8 @@ class Produto {
       string m_descricao;
       int m_qtd_estoque;
       int m_tipo_produto; //Recebe qual tipo de porduto a ser inserido
-      
+      Data m_data_de_fabricacao;
+
     public:
 
       Produto ();
@@ -27,6 +29,7 @@ class Produto {
       void setQtdEstoque(int qtd_estoque);
       void setTipoProduto(int tipo_produto);
       void setIDProduto(string id_produto);
+      void setDataDeFabricacao(Data data_de_fabricacao);
       virtual void atualizarItem();
 
       string getNome();
@@ -35,6 +38,7 @@ class Produto {
       int getQtdEstoque();
       int getTipoProduto();
       string getIDProduto();
+      Data getDataDeFabricacao();
     
 };
 

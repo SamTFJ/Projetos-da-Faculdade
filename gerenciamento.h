@@ -5,7 +5,6 @@
 #include <cctype>
 #include <algorithm>
 #include <ctype.h>
-#include <variant>
 #include "produto.h"
 #include "acessorio.h"
 #include "roupa.h"

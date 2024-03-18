@@ -49,9 +49,10 @@ void Acessorio::atualizarItem(){
     int xquant;
     float xpreco;
     string xdia, xmes, xano;
-    
+
     switch (opcao) {
     case 1:
+      cin.ignore();
       cout << "--> Insira o nome atualizado: ";
       getline(cin, xnome);
       Acessorio::setNome(xnome);
@@ -59,6 +60,7 @@ void Acessorio::atualizarItem(){
       break;
 
     case 2:
+      cin.ignore();
       cout << "--> Insira o ID atualizado: ";
       getline(cin, xid);
       Acessorio::setIDProduto(xid);
@@ -68,12 +70,12 @@ void Acessorio::atualizarItem(){
     case 3:
       cout << "--> Insira o preço atualizado: ";
       cin >> xpreco;
-      cin.ignore();
       Acessorio::setPreco(xpreco);
       condicao = 0;
       break;
 
     case 4:
+      cin.ignore();
       cout << "--> Insira a descrição atualizada: ";
       getline(cin, xdescricao);
       Acessorio::setDescricao(xdescricao);
@@ -83,7 +85,6 @@ void Acessorio::atualizarItem(){
     case 5:
       cout << "--> Insira a quantidade no estoque atualizada: ";
       cin >> xquant;
-      cin.ignore();
       Acessorio::setQtdEstoque(xquant);
       condicao = 0;
       break;
@@ -91,12 +92,12 @@ void Acessorio::atualizarItem(){
     case 6:
       cout << "--> Insira o tipo atualizado: ";
       cin >> xtipo;
-      cin.ignore();
       Acessorio::setTipo(xtipo);
       condicao = 0;
       break;
 
     case 7:
+      cin.ignore();
       cout << "--> Insira o material atualizado: ";
       getline(cin, xmaterial);
       Acessorio::setMaterial(xmaterial);
@@ -117,10 +118,10 @@ void Acessorio::atualizarItem(){
       cout << "Operação cancelada" << endl;
       condicao = 0;
       break;
-      
+
     default:
       cout << "Opção inválida, tente novamente!" << endl;
       break;
     }
-  }while(condicao);
+  } while(condicao);
 }

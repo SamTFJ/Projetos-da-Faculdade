@@ -9,10 +9,10 @@ using namespace std;
 class Roupa : public Produto {
 
   private:
-    
+
     string m_tamanho;
     string m_material, m_tipo, m_cor;
-    
+
   public:
 
     Roupa();

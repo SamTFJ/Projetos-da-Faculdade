@@ -72,7 +72,7 @@ using namespace std;
     int xquant;
     float xpreco;
     string xdia, xmes, xano;
-    
+
     switch (opcao){
     case 1:
       cin.ignore();
@@ -93,7 +93,6 @@ using namespace std;
     case 3:
       cout << "--> Insira o preço atualizado: ";
       cin >> xpreco;
-      cin.ignore();
       Roupa::setPreco(xpreco);
       condicao = 0;
       break;
@@ -109,20 +108,20 @@ using namespace std;
     case 5:
       cout << "--> Insira a quantidade no estoque atualizada: ";
       cin >> xquant;
-      cin.ignore();
       Roupa::setQtdEstoque(xquant);
       condicao = 0;
       break;
 
     case 6:
+      cin.ignore();
       cout << "--> Insira o tamanho atualizado: ";
       getline(cin, xtamanho);
-      cin.ignore();
       Roupa::setTamanho(xtamanho);
       condicao = 0;
       break;
 
     case 7:
+      cin.ignore();
       cout << "--> Insira o material atualizado: ";
       getline(cin, xmaterial);
       Roupa::setMaterial(xmaterial);
@@ -164,5 +163,5 @@ using namespace std;
       cout << "Opção inválida, tente novamente!" << endl;
       break;
     }
-  }while(condicao);
+  } while(condicao);
 }

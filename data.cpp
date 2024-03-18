@@ -4,7 +4,7 @@
 using namespace std;
 
 Data::Data() {
-  
+
 }
 
 Data::Data(string dia, string mes, string ano) {
@@ -14,7 +14,7 @@ Data::Data(string dia, string mes, string ano) {
 }
 
 Data::~Data() {
-  
+
 }
 
 void Data::setDia(string dia) {

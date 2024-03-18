@@ -7,7 +7,7 @@
 using namespace std;
 
 class Pelucia : public Produto{
-  
+
   private:
 
     string m_material;
@@ -25,7 +25,7 @@ class Pelucia : public Produto{
     string getMaterial();
     string getTamanho();
     void atualizarItem() override;
-  
+
 };
 
 #endif 

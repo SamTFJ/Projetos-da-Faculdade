@@ -6,7 +6,7 @@ using namespace std;
   Acessorio::Acessorio() {}
   Acessorio::~Acessorio() {}
 
-  Acessorio::Acessorio(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string material, string tipo) : Produto::Produto(nome, id_produto, preco, descricao, qtd_estoque, tipo_produto) {
+  Acessorio::Acessorio(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao,  string material, string tipo) : Produto::Produto(nome, id_produto, preco, descricao, qtd_estoque, tipo_produto, data_de_fabricacao) {
     m_material = material;
     m_tipo = tipo;
   }
@@ -38,7 +38,8 @@ void Acessorio::atualizarItem(){
     cout << "| --> quantidade no estoque = 5   |" << endl;
     cout << "| --> Material = 6                |" << endl;
     cout << "| --> Tipo = 7                    |" << endl;
-    cout << "| --> Cancelar = 8                |" << endl;
+    cout << "| --> Data de Fabricação = 8      |" << endl;
+    cout << "| --> Cancelar = 9                |" << endl;
     cout << "|=================================|" << endl;
     cout << "--> Opção desejada: ";
     int opcao = 0;
@@ -47,7 +48,9 @@ void Acessorio::atualizarItem(){
     string xnome, xid, xdescricao, xmaterial, xtipo;
     int xquant;
     float xpreco;
-    switch (opcao){
+    string xdia, xmes, xano;
+    
+    switch (opcao) {
     case 1:
       cout << "--> Insira o nome atualizado: ";
       getline(cin, xnome);
@@ -101,10 +104,20 @@ void Acessorio::atualizarItem(){
       break;
 
     case 8:
-      cout << "Operação cancelada" << endl;
+      cin.ignore();
+      cout << "--> Insira a data de fabricação atualizada: ";
+      getline(cin, xdia);
+      getline(cin, xmes);
+      getline(cin, xano);
+      Acessorio::setDataDeFabricacao(xdia, xmes, xano);
       condicao = 0;
       break;
 
+    case 9:
+      cout << "Operação cancelada" << endl;
+      condicao = 0;
+      break;
+      
     default:
       cout << "Opção inválida, tente novamente!" << endl;
       break;

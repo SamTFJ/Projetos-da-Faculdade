@@ -6,7 +6,7 @@ using namespace std;
   Pelucia::Pelucia() {}
   Pelucia::~Pelucia() {}
 
-  Pelucia::Pelucia(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string material, string tamanho) : Produto::Produto(nome, id_produto, preco, descricao, qtd_estoque, tipo_produto) {
+  Pelucia::Pelucia(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao, string material, string tamanho) : Produto::Produto(nome, id_produto, preco, descricao, qtd_estoque, tipo_produto, data_de_fabricacao) {
     m_material = material;
     m_tamanho = tamanho;
   }
@@ -39,7 +39,8 @@ void Pelucia::atualizarItem() {
     cout << "| --> quantidade no estoque = 5   |" << endl;
     cout << "| --> Tamanho = 6                 |" << endl;
     cout << "| --> Material = 7                |" << endl;
-    cout << "| --> Cancelar = 8                |" << endl;
+    cout << "| --> Data de Fabricação = 8      |" << endl;
+    cout << "| --> Cancelar = 9                |" << endl;
     cout << "|=================================|" << endl;
     cout << "--> Opção desejada: ";
     int opcao = 0;
@@ -49,6 +50,8 @@ void Pelucia::atualizarItem() {
     string xtamanho;
     int xquant;
     float xpreco;
+    string xdia, xmes, xano;
+    
     switch (opcao){
     case 1:
       cout << "--> Insira o nome atualizado: ";
@@ -106,6 +109,16 @@ void Pelucia::atualizarItem() {
       break;
 
     case 8:
+      cin.ignore();
+      cout << "--> Insira a data de fabricação atualizada: ";
+      getline(cin, xdia);
+      getline(cin, xmes);
+      getline(cin, xano);
+      Pelucia::setDataDeFabricacao(xdia, xmes, xano);
+      condicao = 0;
+      break;
+
+    case 9:
       cout << "Operação cancelada" << endl;
       condicao = 0;
       break;

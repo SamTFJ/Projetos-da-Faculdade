@@ -7,6 +7,12 @@ Data::Data() {
   
 }
 
+Data::Data(string dia, string mes, string ano) {
+  m_dia = dia;
+  m_mes = mes;
+  m_ano = ano;
+}
+
 Data::~Data() {
   
 }

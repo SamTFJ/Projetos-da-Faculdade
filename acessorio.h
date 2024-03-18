@@ -17,7 +17,7 @@ class Acessorio : public Produto{
     Acessorio();
     ~Acessorio();
 
-    Acessorio(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string material, string tipo);
+    Acessorio(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao, string material, string tipo);
 
     void setMaterial(string material);
     void setTipo(string tipo);

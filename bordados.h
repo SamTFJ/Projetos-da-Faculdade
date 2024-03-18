@@ -16,7 +16,7 @@ class Bordados : public Produto {
     Bordados();
     ~Bordados();
 
-    Bordados(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string tamanho);
+    Bordados(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao, string tamanho);
 
     void setTamanho(string tamanho);
     string getTamanho();

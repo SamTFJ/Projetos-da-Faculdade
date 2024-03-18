@@ -14,14 +14,14 @@ class Produto {
       string m_descricao;
       int m_qtd_estoque;
       int m_tipo_produto; //Recebe qual tipo de porduto a ser inserido
-      Data m_data_de_fabricacao;
+      Data m_data_de_fabricacao = Data();
 
     public:
 
       Produto ();
       ~Produto ();
 
-      Produto (string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto);
+      Produto (string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, Data data_de_fabricacao);
       
       void setNome(string nome);
       void setPreco(float preco);
@@ -29,7 +29,8 @@ class Produto {
       void setQtdEstoque(int qtd_estoque);
       void setTipoProduto(int tipo_produto);
       void setIDProduto(string id_produto);
-      void setDataDeFabricacao(Data data_de_fabricacao);
+      void setDataDeFabricacao(string dia, string mes, string ano);
+
       virtual void atualizarItem();
 
       string getNome();
@@ -38,7 +39,7 @@ class Produto {
       int getQtdEstoque();
       int getTipoProduto();
       string getIDProduto();
-      Data getDataDeFabricacao();
+      string getDataDeFabricacao();
     
 };
 

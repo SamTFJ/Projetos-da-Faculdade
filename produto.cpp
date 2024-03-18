@@ -40,6 +40,10 @@ using namespace std;
     m_id_produto = id_produto;
   }
 
+  void Produto::setDataDeFabricacao(Data data_de_fabricacao) {
+    m_data_de_fabricacao = data_de_fabricacao;
+  }
+
   string Produto::getNome() {
     return m_nome;
   }
@@ -64,4 +68,10 @@ using namespace std;
     return m_id_produto;
   }
 
-  void Produto::atualizarItem() {};
+  Data Produto::getDataDeFabricacao() {
+    return m_data_de_fabricacao;
+  }
+
+  void Produto::atualizarItem() {
+    
+  }

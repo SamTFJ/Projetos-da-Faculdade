@@ -11,19 +11,19 @@ class Pelucia : public Produto{
   private:
 
     string m_material;
-    char m_tamanho;
+    string m_tamanho;
 
   public:
 
     Pelucia();
     ~Pelucia();
 
-    Pelucia(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string material, char tamanho);
+    Pelucia(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string material, string tamanho);
 
     void setMaterial(string material);
-    void setTamanho(char tamanho);
+    void setTamanho(string tamanho);
     string getMaterial();
-    char getTamanho();
+    string getTamanho();
   
 };
 

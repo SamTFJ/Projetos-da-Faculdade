@@ -9,17 +9,17 @@ using namespace std;
 class Bordados : public Produto {
   private:
 
-    char m_tamanho;
+    string m_tamanho;
 
   public:
 
     Bordados();
     ~Bordados();
 
-    Bordados(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, char tamanho);
+    Bordados(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string tamanho);
 
-    void setTamanho(char tamanho);
-    char getTamanho();
+    void setTamanho(string tamanho);
+    string getTamanho();
 };
 
 #endif 

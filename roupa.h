@@ -10,7 +10,7 @@ class Roupa : public Produto {
 
   private:
     
-    char m_tamanho;
+    string m_tamanho;
     string m_material, m_tipo, m_cor;
     
   public:
@@ -18,13 +18,13 @@ class Roupa : public Produto {
     Roupa();
     ~Roupa();
 
-    Roupa(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, char tamanho, string material, string tipo, string cor);
+    Roupa(string nome, string id_produto, float preco, string descricao, int qtd_estoque, int tipo_produto, string tamanho, string material, string tipo, string cor);
 
-    void setTamanho(char tamanho);
+    void setTamanho(string tamanho);
     void setMaterial(string material);
     void setTipo(string tipo);
     void setCor(string cor);
-    char getTamanho();
+    string getTamanho();
     string getMaterial();
     string getTipo();
     string getCor();

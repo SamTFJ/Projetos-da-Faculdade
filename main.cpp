@@ -142,7 +142,7 @@ int main() {
             //system ("CLS");
             CRUD->Relatorio();
             break;
-      
+
         default:
             if(escolha != 7) {
               cout << "Opção Inválida!" << endl;

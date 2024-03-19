@@ -40,6 +40,7 @@ class Produto {
       int getTipoProduto();
       string getIDProduto();
       string getDataDeFabricacao();
+      Data getDataDeFabricacao2();
 
 };
 

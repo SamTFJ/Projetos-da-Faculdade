@@ -1,6 +1,7 @@
 #include <iostream>
 #include <limits>
 #include <string>
+#include <cstring>
 #include <fstream>
 #include <cctype>
 #include <algorithm>
@@ -20,6 +21,20 @@ class CRUD {
   private:
         string ItemName[qtd_mercadorias] = {};
         string ItemID[qtd_mercadorias] = {};
+        Data data_fabricacao[qtd_mercadorias] = {};
+        string preco[qtd_mercadorias] = {};
+        float preco_float[qtd_mercadorias] = {};
+        string descricao[qtd_mercadorias] = {};
+        string qtd_estoque[qtd_mercadorias] = {};
+        int qtd_estoque_int[qtd_mercadorias] = {};
+        string dia[qtd_mercadorias] = {};
+        string mes[qtd_mercadorias] = {};
+        string ano[qtd_mercadorias] = {};
+        string xtamanho[qtd_mercadorias] = {}; 
+        string xmaterial[qtd_mercadorias] = {};
+        string xtipo[qtd_mercadorias] = {};
+        string xcor[qtd_mercadorias] = {};
+        
         Produto** mercadorias = new Produto*[qtd_mercadorias];
 
   public:
@@ -27,16 +42,132 @@ class CRUD {
 
     }
 
-    void AbrirArquivo(){
+    void AbrirArquivo() {
       string linha;
       ifstream meu_arquivo("gerenciamento.txt");
+
       if (meu_arquivo.is_open()) {
-          int i = 0;
-          linha.length();
+        int i = 0;
           while (getline(meu_arquivo, linha)) {
-              ItemID[i] = linha.substr(0, 4);
-              ItemName[i] = linha.substr(4, 1 - 4);
-              i++;
+            char tipo = linha[0];
+            if(tipo == 'R') {
+              size_t pos = linha.find(',');
+              size_t pos2 = linha.find(',', pos + 1);
+              size_t pos3 = linha.find(',', pos2 + 1);
+              size_t pos4 = linha.find(',', pos3 + 1);
+              size_t pos5 = linha.find(',', pos4 + 1);
+              size_t pos6 = linha.find(',', pos5 + 1);
+              size_t pos7 = linha.find(',', pos6 + 1);
+              size_t pos8 = linha.find(',', pos7 + 1);
+              size_t pos9 = linha.find(',', pos8 + 1);
+              size_t pos10 = linha.find(',', pos9 + 1);
+              size_t pos11 = linha.find(',', pos10 + 1);
+
+              ItemID[i] = linha.substr(0, pos);
+              ItemName[i] = linha.substr(pos+1, pos2);
+              preco[i] = linha.substr(pos2+1, pos3);
+              descricao[i] = linha.substr(pos3+1, pos4);
+              qtd_estoque[i] = linha.substr(pos4+1, pos5);
+              dia[i] = linha.substr(pos5+1, pos6);
+              mes[i] = linha.substr(pos6+1, pos7);
+              ano[i] = linha.substr(pos7+1, pos8);
+              xtamanho[i] = linha.substr(pos8+1, pos9);
+              xmaterial[i] = linha.substr(pos9+1, pos10);
+              xtipo[i] = linha.substr(pos10+1, pos11);
+              xcor[i] = linha.substr(pos11+1, ',');
+
+              data_fabricacao[i] = Data(dia[i], mes[i], ano[i]);
+              qtd_estoque_int[i] = stoi(qtd_estoque[i]);
+              preco_float[i] = stof(preco[i]);
+              
+              mercadorias[i] = new Roupa(ItemName[i], ItemID[i], preco_float[i], descricao[i], qtd_estoque_int[i], 1, data_fabricacao[i], xtamanho[i], xmaterial[i], xtipo[i], xcor[i]); 
+
+            }
+            
+            else if(tipo == 'A') {
+              size_t pos  = linha.find(',');
+              size_t pos2 = linha.find(',', pos + 1);
+              size_t pos3 = linha.find(',', pos2 + 1);
+              size_t pos4 = linha.find(',', pos3 + 1);
+              size_t pos5 = linha.find(',', pos4 + 1);
+              size_t pos6 = linha.find(',', pos5 + 1);
+              size_t pos7 = linha.find(',', pos6 + 1);
+              size_t pos8 = linha.find(',', pos7 + 1);
+              size_t pos9 = linha.find(',', pos8 + 1);
+
+              ItemID[i] = linha.substr(0, pos);
+              ItemName[i] = linha.substr(pos+1, pos2);
+              preco[i] = linha.substr(pos2+1, pos3);
+              descricao[i] = linha.substr(pos3+1, pos4);
+              qtd_estoque[i] = linha.substr(pos4+1, pos5);
+              dia[i] = linha.substr(pos5+1, pos6);
+              mes[i] = linha.substr(pos6+1, pos7);
+              ano[i] = linha.substr(pos7+1, pos8);
+              xmaterial[i] = linha.substr(pos8+1, pos9);
+              xtipo[i] = linha.substr(pos9+1, ',');
+
+              data_fabricacao[i] = Data(dia[i], mes[i], ano[i]);
+              qtd_estoque_int[i] = stoi(qtd_estoque[i]);
+              preco_float[i] = stof(preco[i]);
+              
+              mercadorias[i] = new Acessorio(ItemName[i], ItemID[i], preco_float[i], descricao[i], qtd_estoque_int[i], 2, data_fabricacao[i], xmaterial[i], xtipo[i]); 
+            }
+            else if(tipo == 'P'){
+              size_t pos = linha.find(',');
+              size_t pos2 = linha.find(',', pos + 1);
+              size_t pos3 = linha.find(',', pos2 + 1);
+              size_t pos4 = linha.find(',', pos3 + 1);
+              size_t pos5 = linha.find(',', pos4 + 1);
+              size_t pos6 = linha.find(',', pos5 + 1);
+              size_t pos7 = linha.find(',', pos6 + 1);
+              size_t pos8 = linha.find(',', pos7 + 1);
+              size_t pos9 = linha.find(',', pos8 + 1);
+
+              ItemID[i] = linha.substr(0, pos);
+              ItemName[i] = linha.substr(pos+1, pos2);
+              preco[i] = linha.substr(pos2+1, pos3);
+              descricao[i] = linha.substr(pos3+1, pos4);
+              qtd_estoque[i] = linha.substr(pos4+1, pos5);
+              dia[i] = linha.substr(pos5+1, pos6);
+              mes[i] = linha.substr(pos6+1, pos7);
+              ano[i] = linha.substr(pos7+1, pos8);
+              xmaterial[i] = linha.substr(pos8+1, pos9);
+              xtamanho[i] = linha.substr(pos9+1, ',');
+
+              data_fabricacao[i] = Data(dia[i], mes[i], ano[i]);
+              qtd_estoque_int[i] = stoi(qtd_estoque[i]);
+              preco_float[i] = stof(preco[i]);
+              
+              mercadorias[i] = new Pelucia(ItemName[i], ItemID[i], preco_float[i], descricao[i], qtd_estoque_int[i], 3, data_fabricacao[i], xmaterial[i], xtamanho[i]);
+
+            }
+            else if (tipo == 'B'){
+              size_t pos = linha.find(',');
+              size_t pos2 = linha.find(',', pos + 1);
+              size_t pos3 = linha.find(',', pos2 + 1);
+              size_t pos4 = linha.find(',', pos3 + 1);
+              size_t pos5 = linha.find(',', pos4 + 1);
+              size_t pos6 = linha.find(',', pos5 + 1);
+              size_t pos7 = linha.find(',', pos6 + 1);
+              size_t pos8 = linha.find(',', pos7 + 1);
+
+              ItemID[i] = linha.substr(0, pos);
+              ItemName[i] = linha.substr(pos+1, pos2);
+              preco[i] = linha.substr(pos2+1, pos3);
+              descricao[i] = linha.substr(pos3+1, pos4);
+              qtd_estoque[i] = linha.substr(pos4+1, pos5);
+              dia[i] = linha.substr(pos5+1, pos6);
+              mes[i] = linha.substr(pos6+1, pos7);
+              ano[i] = linha.substr(pos7+1, pos8);
+              xtamanho[i] = linha.substr(pos8+1, ',');
+
+              data_fabricacao[i] = Data(dia[i], mes[i], ano[i]);
+              qtd_estoque_int[i] = stoi(qtd_estoque[i]);
+              preco_float[i] = stof(preco[i]);
+              
+              mercadorias[i] = new Bordados(ItemName[i], ItemID[i], preco_float[i], descricao[i], qtd_estoque_int[i], 4, data_fabricacao[i], xtamanho[i]);
+            }
+            i++;
           }
       }
       else {
@@ -44,17 +175,35 @@ class CRUD {
       }
     }
 
-    void SaveToFile(){
+    void SalvarArquivo() {
       ofstream meu_arquivo;
       meu_arquivo.open("gerenciamento.txt");
 
       for (int i = 0; i < qtd_mercadorias; i++) {
-          if (ItemID[i] == "\0") {
-              break;
+          if (ItemID[i][0] == '\0') {
+              continue;
           }
+          char tipo = ItemID[i][0];
+          if(tipo == 'R') {
+            Roupa* roupa = dynamic_cast<Roupa*>(mercadorias[i]);
+              meu_arquivo << roupa->getIDProduto() + "," + roupa->getNome() + "," + to_string(roupa->getPreco()) + "," + roupa->getDescricao() + "," + to_string(roupa->getQtdEstoque()) + "," + roupa->getDataDeFabricacao2().getDia() + "," + roupa->getDataDeFabricacao2().getMes() + "," + roupa->getDataDeFabricacao2().getAno() + "," + roupa->getTamanho() + "," + roupa->getMaterial() + "," + roupa->getTipo() + "," + roupa->getCor() + "," << endl;
 
-          else {
-              meu_arquivo << ItemID[i] + "," + ItemName[i] << endl;
+          }
+            
+          else if(tipo == 'A') {
+            Acessorio* acessorio = dynamic_cast<Acessorio*>(mercadorias[i]);
+            
+            meu_arquivo << acessorio->getIDProduto() + "," + acessorio->getNome() + "," + to_string(acessorio->getPreco()) + "," + acessorio->getDescricao() + "," + to_string(acessorio->getQtdEstoque()) + "," + acessorio->getDataDeFabricacao2().getDia() + "," + acessorio->getDataDeFabricacao2().getMes() + "," + acessorio->getDataDeFabricacao2().getAno() + "," + acessorio->getMaterial() + "," + acessorio->getTipo() + "," << endl;
+          }
+          else if(tipo == 'P') {
+            Pelucia* pelucia = dynamic_cast<Pelucia*>(mercadorias[i]);
+
+              meu_arquivo << pelucia->getIDProduto() + "," + pelucia->getNome() + "," + to_string(pelucia->getPreco()) + "," + pelucia->getDescricao() + "," + to_string(pelucia->getQtdEstoque()) + "," + pelucia->getDataDeFabricacao2().getDia() + "," + pelucia->getDataDeFabricacao2().getMes() + "," + pelucia->getDataDeFabricacao2().getAno() + "," + pelucia->getMaterial() + "," + pelucia->getTamanho() + "," << endl; 
+          }
+          else if(tipo == 'B') {
+            Bordados* bordados = dynamic_cast<Bordados*>(mercadorias[i]);
+
+            meu_arquivo << bordados->getIDProduto() + "," + bordados->getNome() + "," + to_string(bordados->getPreco()) + "," + bordados->getDescricao() + "," + to_string(bordados->getQtdEstoque()) + "," + bordados->getDataDeFabricacao2().getDia() + "," + bordados->getDataDeFabricacao2().getMes() + "," + bordados->getDataDeFabricacao2().getAno() + "," + bordados->getTamanho() + "," << endl;
           }
       }
     }

@@ -75,6 +75,10 @@ using namespace std;
     return m_data_de_fabricacao.getDia() + "/" +  m_data_de_fabricacao.getMes() + "/" + m_data_de_fabricacao.getAno();
   }
 
+  Data Produto::getDataDeFabricacao2() {
+    return m_data_de_fabricacao;
+  }
+
   void Produto::atualizarItem() {
 
   }
